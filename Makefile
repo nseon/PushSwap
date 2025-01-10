@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/10 11:47:22 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/10 14:44:49 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,14 @@ LIB_PATH	:=	$(addprefix $(LIB_DIR), $(LIB_PATH))
 LIB			=	$(patsubst lib%a, %, $(notdir $(LIBS_PATH)))
 
 INC_DIR 	=	includes/
+INCLUDES	=	$(INC_DIR)\
+				$(addprefix $(dir $(LIB_PATH)), $(INC_DIR))
 
 # --------------CONFIGS-------------- #
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-CPPFLAGS	=	-MMD -MP -I$(INC_DIR)
+CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))
 LDLIBS		+=	$(addprefix -l, $(LIB))
