@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/09 17:23:21 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/10 11:47:22 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ MOVES_SRC	=	push_moves.c\
 # -----------LIBS / INCLUDES--------- #
 
 LIB_DIR 	=	lib/
-LIB_PATH	=	libft/libft.a
-LIB_PATH	:=	$(addprefix$(LIB_DIR), $(LIB_PATH))
+LIB_PATH	=	Libft/libft.a
+LIB_PATH	:=	$(addprefix $(LIB_DIR), $(LIB_PATH))
 LIB			=	$(patsubst lib%a, %, $(notdir $(LIBS_PATH)))
 
 INC_DIR 	=	includes/
@@ -53,35 +53,40 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
 CPPFLAGS	=	-MMD -MP -I$(INC_DIR)
 
-LDFLAGS		+=	$(addprefix -L, $(dir $(LIBS_PATH)))
-LDLIBS		+=	$(addprefix -l, $(LIBS))
+LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))
+LDLIBS		+=	$(addprefix -l, $(LIB))
 
 # --------------TARGETS-------------- #
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBS_PATH)
+$(NAME): $(LIB_PATH) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 
 $(MAKE_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-$(LIBS_PATH): force
-	@$(MAKE) -C $(@D)
+$(LIB_PATH): force
+	$(MAKE) -C $(@D)
 
 .PHONY: clean
 clean:
+	-for lib in $(dir $(LIB_PATH)); do $(MAKE) -s -C $$lib $@; done
 	rm -rf $(MAKE_DIR)
 
 .PHONY: fclean
-fclean: clean
-	rm -rf $(NAME)
+fclean:
+	-for lib in $(dir $(LIB_PATH)); do $(MAKE) -s -C $$lib $@; done
+	rm -rf $(NAME) $(MAKE_DIR)
 
 .PHONY: re
 re: fclean
 	$(MAKE)
+
+.PHONY: force
+force:
 
 -include $(DEP)
 
