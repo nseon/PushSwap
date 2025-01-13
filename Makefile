@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/10 14:44:49 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/13 18:41:50 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ MOVES_SRC	=	push_moves.c\
 LIB_DIR 	=	lib/
 LIB_PATH	=	Libft/libft.a
 LIB_PATH	:=	$(addprefix $(LIB_DIR), $(LIB_PATH))
-LIB			=	$(patsubst lib%a, %, $(notdir $(LIBS_PATH)))
+LIB			=	$(patsubst lib%.a, %, $(notdir $(LIB_PATH)))
 
 INC_DIR 	=	includes/
 INCLUDES	=	$(INC_DIR)\

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/10 15:53:30 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/13 19:05:47 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,36 @@
 #include "libft.h"
 #include "moves.h"
 
-void	fill_struct(char **a, int sizea)
+t_stacks	*fill_struct(char **a, int argc, t_stacks *stacks)
 {
 	int			i;
-	t_stacks	stacks;
-	tab = malloc(sizeof(int) * sizea);
-	if (!tab)
+
+	i = 0;
+	stacks->sizea = argc;
+	stacks->sizeb = argc;
+	stacks->a = malloc(sizeof(int) * stacks->sizea);
+	if (!stacks->a)
 		return (NULL);
-	while (i <= sizea)
+	stacks->b = malloc(sizeof(int) * stacks->sizeb);
+	if (!stacks->b)
+		return (NULL);
+	while (i <= stacks->sizea)
 	{
-		tab[i] = ft_atoi(a[i]);
+		stacks->a[i] = ft_atoi(a[i]);
 		i++;
 	}
-
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
 {
+	t_stacks	*stacks;
+
+	stacks = malloc(sizeof (t_stacks));
+	if(!stacks)
+		return (0);
+	fill_struct(argv, argc, stacks);
+	ft_printf();
 
 	return (0);
 }
