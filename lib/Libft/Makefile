@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/13 15:13:21 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/14 13:46:47 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,29 @@ OBJ			=	$(patsubst %.c, $(MAKE_DIR)%.o, $(SRC))
 
 DEP			=	$(patsubst %.c, $(MAKE_DIR)%.d, $(SRC))
 
+# --------------ft_printf------------ #
+
+SRC			=	$(addprefix $(PRINTF_DIR), $(PRINTF_SRC))
+
+PRINTF_DIR	=	ft_printf/
+
+PRINTF_SRC	=	fcts.c\
+				fill.c\
+				lens.c\
+				printf.c
+
+# ---------------GNL----------------- #
+
+SRC			+=	$(addprefix $(GNL_DIR), $(GNL_SRC))
+
+GNL_DIR		=	GetNextLine/
+
+GNL_SRC		=	get_next_line.c\
+				get_next_line_utils.c
+
 # ---------------CHAR---------------- #
 
-SRC			=	$(addprefix $(CHAR_DIR), $(CHAR_SRC))
+SRC			+=	$(addprefix $(CHAR_DIR), $(CHAR_SRC))
 
 CHAR_DIR	=	char/
 
@@ -108,7 +128,7 @@ LIB			=	$(patsubst lib%a, %, $(notdir $(LIBS_PATH)))
 
 INC_DIR 	=	includes/
 INCLUDES	=	$(INC_DIR)\
-				$(addprefix $(dir $(LIB_PATH)), $(INC_DIR))
+				$(addsuffix $(INC_DIR), $(dir $(LIB_PATH)))
 
 # --------------CONFIGS-------------- #
 

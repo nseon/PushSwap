@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/13 18:41:50 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/14 13:46:15 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ LIB			=	$(patsubst lib%.a, %, $(notdir $(LIB_PATH)))
 
 INC_DIR 	=	includes/
 INCLUDES	=	$(INC_DIR)\
-				$(addprefix $(dir $(LIB_PATH)), $(INC_DIR))
+				$(addsuffix $(INC_DIR), $(dir $(LIB_PATH)))
 
 # --------------CONFIGS-------------- #
 

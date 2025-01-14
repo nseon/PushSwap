@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 09:20:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/10 15:58:16 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/14 16:17:53 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_stacks
 	int	*b;
 	int	sizea;
 	int	sizeb;
+	int	sizet;
 }	t_stacks;
 
 void	pa(t_stacks *stacks);
