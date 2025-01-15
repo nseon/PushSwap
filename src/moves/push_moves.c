@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:23:01 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/15 10:06:21 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/15 10:27:08 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "shift_utils.h"
 #include <unistd.h>
 
-int	pa(t_stacks *stacks)
+void	pa(t_stacks *stacks)
 {
 	stacks->sizea += 1;
 	shift_down(stacks->a, stacks->sizea - 1);
@@ -22,10 +22,9 @@ int	pa(t_stacks *stacks)
 	shift_up(stacks->b, stacks->sizeb - 1);
 	stacks->sizeb -= 1;
 	write(1, "pa\n", 3);
-	return (1);
 }
 
-int	pb(t_stacks *stacks)
+void	pb(t_stacks *stacks)
 {
 	stacks->sizeb += 1;
 	shift_down(stacks->b, stacks->sizeb - 1);
@@ -33,5 +32,4 @@ int	pb(t_stacks *stacks)
 	shift_up(stacks->a, stacks->sizea - 1);
 	stacks->sizea -= 1;
 	write(1, "pb\n", 3);
-	return (1);
 }
