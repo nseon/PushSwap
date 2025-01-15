@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/15 12:34:43 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/15 17:17:56 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,20 @@ void	pre_tri(t_stacks *stacks)
 
 void	tri(t_stacks *stacks)
 {
+	int	n;
 
+	n = 6;
+	while (stacks->sizeb > 0)
+	{
+		while (stacks->b[0] > 2 * stacks->sizet / 3)
+		{
+			if (n * stacks->sizet / 6 >= stacks->b[0] && stacks->b[0] >= n - 1 * stacks->sizet / 6)
+				pa(stacks);
+			if (n - 1 * stacks->sizet / 6 >= stacks->b[0] && stacks->b[0] >= n - 2 * stacks->sizet / 6)
+				rb(stacks);
+		}
+		n -= 2;
+	}
 }
 
 t_stacks	*fill_struct(char **a, int argc, t_stacks *stacks)
@@ -69,5 +82,6 @@ int	main(int argc, char **argv)
 		return (0);
 	fill_struct(argv + 1, argc - 1, stacks);
 	pre_tri(stacks);
+	tri(stacks);
 	return (0);
 }
