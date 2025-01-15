@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/15 17:17:56 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/15 18:08:40 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	tri(t_stacks *stacks)
 	n = 6;
 	while (stacks->sizeb > 0)
 	{
-		while (stacks->b[0] > 2 * stacks->sizet / 3)
+		while (stacks->b[0] >= ((n / 2) - 1) * stacks->sizet / 3)
 		{
 			if (n * stacks->sizet / 6 >= stacks->b[0] && stacks->b[0] >= n - 1 * stacks->sizet / 6)
 				pa(stacks);
