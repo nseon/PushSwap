@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:55:45 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/14 17:30:55 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/15 10:06:55 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "moves.h"
 #include <unistd.h>
 
-void	ra(t_stacks *stacks)
+int	ra(t_stacks *stacks)
 {
 	int	temp;
 
@@ -22,9 +22,10 @@ void	ra(t_stacks *stacks)
 	shift_up(stacks->a, stacks->sizea - 1);
 	stacks->a[stacks->sizea - 1] = temp;
 	write (1, "ra\n", 3);
+	return (1);
 }
 
-void	rb(t_stacks *stacks)
+int	rb(t_stacks *stacks)
 {
 	int	temp;
 
@@ -32,9 +33,10 @@ void	rb(t_stacks *stacks)
 	shift_up(stacks->b, stacks->sizeb - 1);
 	stacks->b[stacks->sizeb - 1] = temp;
 	write (1, "rb\n", 3);
+	return (1);
 }
 
-void	rr(t_stacks *stacks)
+int	rr(t_stacks *stacks)
 {
 	int	temp;
 
@@ -45,4 +47,5 @@ void	rr(t_stacks *stacks)
 	shift_up(stacks->b, stacks->sizeb);
 	stacks->b[stacks->sizeb - 1] = temp;
 	write (1, "rr\n", 3);
+	return (1);
 }

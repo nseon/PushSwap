@@ -6,14 +6,14 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 13:03:11 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/14 16:13:00 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/15 10:07:15 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "moves.h"
 #include <unistd.h>
 
-void	sa(t_stacks *stacks)
+int	sa(t_stacks *stacks)
 {
 	int	temp;
 
@@ -21,9 +21,10 @@ void	sa(t_stacks *stacks)
 	stacks->a[0] = stacks->a[1];
 	stacks->a[1] = temp;
 	write(1, "sa\n", 3);
+	return (1);
 }
 
-void	sb(t_stacks *stacks)
+int	sb(t_stacks *stacks)
 {
 	int	temp;
 
@@ -31,9 +32,10 @@ void	sb(t_stacks *stacks)
 	stacks->b[0] = stacks->b[1];
 	stacks->b[1] = temp;
 	write(1, "sb\n", 3);
+	return (1);
 }
 
-void	ss(t_stacks *stacks)
+int	ss(t_stacks *stacks)
 {
 	int	temp;
 
@@ -44,4 +46,5 @@ void	ss(t_stacks *stacks)
 	stacks->b[0] = stacks->b[1];
 	stacks->b[1] = temp;
 	write(1, "ss\n", 3);
+	return (1);
 }
