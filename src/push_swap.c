@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/21 18:06:26 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/22 16:17:45 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 #include "moves.h"
-
-void	pre_tri(t_stacks *stacks)
-{
-	int	n;
-
-	n = stacks->sizet / 20;
-	while (stacks->sizea > 0)
-	{
-		while (stacks->sizea > 0 && (stacks->a[0] > stacks->sizet - n || stacks->a[0] < n))
-		{
-			if (stacks->a[0] > stacks->sizet - n)
-			{
-				pb(stacks);
-				rb(stacks);
-				n += 1;
-			}
-			if (stacks->a[0] < n)
-			{
-				pb(stacks);
-			}
-		}
-		ra(stacks);
-	}
-}
-
-int	search_next(t_stacks *stacks)
-{
-	int	i;
-
-	i = 0;
-	while (stacks->b[i] != stacks->sizeb && i < stacks->sizeb)
-		i++;
-	return (i);
-}
-
-void	tri(t_stacks *stacks)
-{
-	int	n;
-
-	n = 0;
-	while (stacks->b[0] != stacks->sizet - n)
-	{
-		if (stacks->b[0] > stacks->a[stacks->sizea - 1])
-		{
-			pa(stacks);
-			ra(stacks);
-		}
-		rrb(stacks);
-	}
-	pa(stacks);
-	while (stacks->sizeb > 0)
-	{
-		while (search_next(stacks) >= stacks->sizeb)
-			ra(stacks);
-		if (search_next(stacks) <= stacks->sizeb / 2)
-		{
-			while (stacks->b[0] != stacks->sizeb)
-				rb(stacks);
-		}
-		else
-		{
-			while (stacks->b[0] != stacks->sizeb)
-				rrb(stacks);
-		}
-		pa(stacks);
-	}
-}
+#include "sorting.h"
 
 t_stacks	*fill_struct(char **a, int argc, t_stacks *stacks)
 {

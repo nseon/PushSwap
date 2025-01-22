@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/14 13:46:15 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/22 16:14:36 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,15 @@ MOVES_SRC	=	push_moves.c\
 				rotate_moves.c\
 				shift_utils.c\
 				swap_moves.c\
+
+# -------------SORTING--------------- #
+
+SRC			+=	$(addprefix $(SORT_DIR), $(SORT_SRC))
+
+SORT_DIR	=	sorting/
+
+SORT_SRC	=	presort.c\
+				sort.c
 
 # -----------LIBS / INCLUDES--------- #
 
