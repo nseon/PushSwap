@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:11:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/23 13:06:50 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/23 17:10:35 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,31 @@ void	biggest(t_stacks *stacks, int nb, int direction)
 	pa(stacks);
 }
 
+void	three_sort(t_stacks *stacks)
+{
+	if (stacks->a[0] < stacks->a[1] && stacks->a[0] < stacks->a[2])
+	{
+		pb(stacks);
+		sa(stacks);
+		pa(stacks);
+	}
+	else if (stacks->a[1] < stacks->a[0] && stacks->a[1] < stacks->a[2]
+			&& stacks->a[0] < stacks->a[2])
+		sa(stacks);
+	while (stacks->a[0] > stacks->a[2])
+	{
+		ra(stacks);
+		if (stacks->a[1] < stacks->a[0] && stacks->a[1] < stacks->a[2]
+			&& stacks->a[0] < stacks->a[2])
+		sa(stacks);
+	}
+}
+
 void	tri(t_stacks *stacks)
 {
 	int	n;
 
-	n = 1;
-	biggest(stacks, stacks->sizet, 0);
+	n = 3;
 	while (stacks->sizeb > 0 || stacks->a[stacks->sizea - 1] != stacks->sizet)
 	{
 		while (stacks->a[stacks->sizea - 1] == stacks->a[0] - 1)
@@ -59,7 +78,7 @@ void	tri(t_stacks *stacks)
 			n++;
 		}
 		if (search_next(stacks, n) <= stacks->sizeb / 2
-			 && stacks->sizeb > 0)
+			&& stacks->sizeb > 0)
 		{
 			biggest(stacks, stacks->sizet - n, 1);
 			n++;

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:11:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/23 13:07:37 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/23 16:56:52 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void	pre_tri(t_stacks *stacks)
 	int	n;
 
 	n = stacks->sizet / square_root((double)stacks->sizet);
-	while (stacks->sizea > 0)
+	while (stacks->sizea > 3)
 	{
-		while (stacks->sizea > 0 && (stacks->a[0] > stacks->sizet - n
+		while (stacks->sizea > 3 && ((stacks->sizet - 2 > stacks->a[0] && stacks->a[0] > stacks->sizet - n)
 				|| stacks->a[0] < n))
 		{
-			if (stacks->a[0] > stacks->sizet - n)
+			if (stacks->sizet - 2 > stacks->a[0] && stacks->a[0] > stacks->sizet - n)
 			{
 				pb(stacks);
 				rb(stacks);
 				n += 1;
 			}
-			if (stacks->a[0] < n)
+			else if (stacks->a[0] < n)
 			{
 				pb(stacks);
 			}

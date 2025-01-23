@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/22 16:14:36 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/23 13:38:11 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,10 @@ $(MAKE_DIR)%.o: $(SRC_DIR)%.c
 
 $(LIB_PATH): force
 	$(MAKE) -C $(@D)
+
+.PHONY: norminette
+norminette:
+	norminette $(LIB_DIR) $(INC_DIR) $(SRC_DIR)
 
 .PHONY: clean
 clean:
