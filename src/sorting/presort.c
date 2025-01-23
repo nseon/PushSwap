@@ -6,11 +6,12 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:11:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/22 17:40:01 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/23 13:07:37 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "moves.h"
+#include "ft_printf.h"
 
 int	square_root(double n)
 {

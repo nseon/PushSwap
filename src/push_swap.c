@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/22 16:17:45 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/23 13:06:17 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_stacks	*fill_struct(char **a, int argc, t_stacks *stacks)
 	stacks->b = malloc(sizeof (int) * stacks->sizet);
 	if (!stacks->b)
 		return (free(stacks->a), NULL);
-	while (i + 1 <= stacks->sizea)
+	while (i + 1 <= stacks->sizet)
 	{
 		stacks->a[i] = ft_atoi(a[i]);
 		i++;
@@ -48,5 +48,8 @@ int	main(int argc, char **argv)
 	fill_struct(argv + 1, argc - 1, stacks);
 	pre_tri(stacks);
 	tri(stacks);
+	free(stacks->a);
+	free(stacks->b);
+	free(stacks);
 	return (0);
 }
