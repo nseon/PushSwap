@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/01/23 13:38:11 by nseon            ###   ########.fr        #
+#    Updated: 2025/01/24 14:27:28 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,14 @@ SORT_DIR	=	sorting/
 
 SORT_SRC	=	presort.c\
 				sort.c
+
+# -------------PARSING--------------- #
+
+SRC			+=	$(addprefix $(PARS_DIR), $(PARS_SRC))
+
+PARS_DIR	=	parsing/
+
+PARS_SRC	=	parsing.c
 
 # -----------LIBS / INCLUDES--------- #
 

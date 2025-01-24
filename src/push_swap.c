@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:44:26 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/23 17:10:35 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/24 17:46:20 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,66 +15,49 @@
 #include "ft_printf.h"
 #include "moves.h"
 #include "sorting.h"
+#include "parsing.h"
 
-t_stacks	*fill_struct(char **a, int argc, t_stacks *stacks)
-{
-	int	i;
+// int	main(int argc, char **argv)
+// {
+// 	t_stacks	*stacks;
 
-	i = 0;
-	stacks->sizea = argc;
-	stacks->sizeb = 0;
-	stacks->sizet = argc;
-	stacks->a = malloc(sizeof (int) * stacks->sizet);
-	if (!stacks->a)
-		return (NULL);
-	stacks->b = malloc(sizeof (int) * stacks->sizet);
-	if (!stacks->b)
-		return (free(stacks->a), NULL);
-	while (i + 1 <= stacks->sizet)
-	{
-		stacks->a[i] = ft_atoi(a[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-int	is_sort(t_stacks *stacks)
-{
-	int	i;
-
-	i = 0;
-	while (i < stacks->sizea)
-	{
-		if (stacks->a[i] != i + 1)
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	stacks = malloc(sizeof (t_stacks));
+// 	if (!stacks)
+// 		return (0);
+// 	fill_struct(argv + 1, argc - 1, stacks);
+// 	if (!is_sort(stacks))
+// 	{
+// 		if (stacks->sizet == 2)
+// 			sa(stacks);
+// 		else if (stacks->sizet == 3)
+// 			three_sort(stacks);
+// 		else
+// 		{
+// 			pre_sort(stacks);
+// 			if (!is_sort(stacks))
+// 				three_sort(stacks);
+// 			sort(stacks);
+// 		}
+// 	}
+// 	free(stacks->a);
+// 	free(stacks->b);
+// 	free(stacks);
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
-	t_stacks	*stacks;
+	t_stacks *stacks;
+	int	i;
 
+	i = 0;
 	stacks = malloc(sizeof (t_stacks));
 	if (!stacks)
 		return (0);
-	fill_struct(argv + 1, argc - 1, stacks);
-	if (!is_sort(stacks))
+	create_tab(argv + 1, argc - 1, stacks);
+	while (i < argc - 1)
 	{
-		if (stacks->sizet == 3)
-			three_sort(stacks);
-		else
-		{
-			pre_tri(stacks);
-			three_sort(stacks);
-			pa(stacks);
-			ra(stacks);
-			tri(stacks);
-		}
+		ft_printf("%d %d\n", argv[i + 1], stacks->a[i]);
+		i++;
 	}
-	free(stacks->a);
-	free(stacks->b);
-	free(stacks);
-	return (0);
 }

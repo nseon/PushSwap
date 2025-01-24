@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:11:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/23 17:10:35 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/24 14:29:50 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,18 @@ void	three_sort(t_stacks *stacks)
 		pa(stacks);
 	}
 	else if (stacks->a[1] < stacks->a[0] && stacks->a[1] < stacks->a[2]
-			&& stacks->a[0] < stacks->a[2])
+		&& stacks->a[0] < stacks->a[2])
 		sa(stacks);
 	while (stacks->a[0] > stacks->a[2])
 	{
 		ra(stacks);
 		if (stacks->a[1] < stacks->a[0] && stacks->a[1] < stacks->a[2]
 			&& stacks->a[0] < stacks->a[2])
-		sa(stacks);
+			sa(stacks);
 	}
 }
 
-void	tri(t_stacks *stacks)
+void	sort(t_stacks *stacks)
 {
 	int	n;
 
