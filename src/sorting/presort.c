@@ -6,12 +6,14 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:11:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/24 14:28:36 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/27 17:02:06 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "moves.h"
 #include "ft_printf.h"
+#include <stdlib.h>
+#include "parsing.h"
 
 int	square_root(double n)
 {
@@ -41,6 +43,8 @@ void	pre_sort(t_stacks *stacks)
 					&& stacks->a[0] > stacks->sizet - n)
 				|| (stacks->a[0] < n - 3 && stacks->a[0] < stacks->sizet - 2)))
 		{
+			if (is_sort(stacks) && stacks->sizeb == 0)
+				exit(EXIT_SUCCESS);
 			if (stacks->sizet - 2 > stacks->a[0]
 				&& stacks->a[0] > stacks->sizet - n)
 			{
@@ -49,10 +53,9 @@ void	pre_sort(t_stacks *stacks)
 				n += 1;
 			}
 			else if (stacks->a[0] < n - 3 && stacks->a[0] < stacks->sizet - 2)
-			{
 				pb(stacks);
-			}
 		}
-		ra(stacks);
+		if (stacks->sizea > 3)
+			ra(stacks);
 	}
 }
