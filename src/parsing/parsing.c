@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:09:36 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/27 14:50:44 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/27 18:41:51 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	*create_tab(char **input, int max, t_stacks *stacks)
 	while (i < max)
 	{
 		list[i] = ft_atoi(input[i]);
-		if (list[i] == 0 && (ft_strlen(input[i]) != 1 || 0 != input[i][0]))
+		if (list[i] == 0 && (ft_strlen(input[i]) != 1 || '0' != input[i][0]))
 		{
 			free(list);
 			exit_free(stacks);
