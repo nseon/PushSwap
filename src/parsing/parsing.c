@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:09:36 by nseon             #+#    #+#             */
-/*   Updated: 2025/01/27 18:41:51 by nseon            ###   ########.fr       */
+/*   Updated: 2025/01/28 13:47:11 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	index_mk(t_stacks *stacks, int	*list, int max)
 	free(list);
 }
 
-void	*create_tab(char **input, int max, t_stacks *stacks)
+void	create_tab(char **input, int max, t_stacks *stacks)
 {
 	int	i;
 	int	*list;
@@ -92,10 +92,9 @@ void	*create_tab(char **input, int max, t_stacks *stacks)
 		exit_free(stacks);
 	}
 	index_mk(stacks, list, max);
-	return (NULL);
 }
 
-void	*fill_struct(char **a, int argc, t_stacks *stacks)
+void	fill_struct(char **a, int argc, t_stacks *stacks)
 {
 	stacks->sizea = argc;
 	stacks->sizeb = 0;
@@ -103,7 +102,6 @@ void	*fill_struct(char **a, int argc, t_stacks *stacks)
 	stacks->a = NULL;
 	stacks->b = malloc(sizeof (int) * stacks->sizet);
 	if (!stacks->b)
-		return (NULL);
+		exit_free(stacks);
 	create_tab(a, argc, stacks);
-	return (NULL);
 }
